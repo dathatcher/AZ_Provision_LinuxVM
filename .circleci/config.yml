@@ -6,7 +6,15 @@ jobs:
     steps:
     - run: |
         az login --service-principal -u $AZURE_SERVICE_PRINC --password $AZURE_SERVICE_PRINC_PASSWORD --tenant $AZURE_TENANT
-        #az appservice plan create -g $AZ_RESOURCE_GRP -n $AZ_SERVICE_PLAN        
+        az appservice plan create -g $AZ_RESOURCE_GRP -n $AZ_SERVICE_PLAN
+        az vm create \
+           --resource-group $AZ_RESOURCE_GRP \
+           --name $AZ_LINUX_VM_NAME \
+           --image $AZ_IMAGE \
+           --admin-username $AZ_VM_USERID \
+           --admin-password $AZ_VM_PASS \
+           --use-unmanaged-disk \
+           --location local     
 workflows:
   version: 2
   build_Infra:

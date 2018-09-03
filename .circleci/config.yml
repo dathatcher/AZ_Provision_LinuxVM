@@ -14,7 +14,7 @@ jobs:
            --admin-username $AZ_VM_USERID \
            --admin-password $AZ_VM_PASS \
            --use-unmanaged-disk \
-           --location local     
+           --location eastus     
 workflows:
   version: 2
   build_Infra:
